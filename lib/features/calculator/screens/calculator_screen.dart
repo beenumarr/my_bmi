@@ -519,5 +519,3 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
     );
   }
 }
-  }
-}
