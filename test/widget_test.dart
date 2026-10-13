@@ -1,30 +1,77 @@
-// This is a basic Flutter widget test.
-//
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility in the flutter_test package. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
-
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-
-import 'package:my_bmi/main.dart';
+import 'package:my_bmi/app.dart';
+import 'package:my_bmi/core/constants/app_constants.dart';
+import 'package:my_bmi/features/history/services/history_service.dart';
+import 'package:my_bmi/features/settings/services/settings_service.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+  setUp(() {
+    SharedPreferences.setMockInitialValues({});
+  });
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+  testWidgets('MyBmiApp loads and displays Calculator with navigation tabs',
+      (WidgetTester tester) async {
+    final settingsService = SettingsService();
+    final historyService = HistoryService();
+    await settingsService.init();
+    await historyService.init();
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
+    tester.view.physicalSize = const Size(1080, 2400);
+    tester.view.devicePixelRatio = 2.5;
+    addTearDown(tester.view.resetPhysicalSize);
+    addTearDown(tester.view.resetDevicePixelRatio);
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    await tester.pumpWidget(
+      MyBmiApp(
+        settingsService: settingsService,
+        historyService: historyService,
+      ),
+    );
+    await tester.pumpAndSettle();
+
+    // Verify Brand title and welcome header
+    expect(find.text(AppConstants.appName), findsOneWidget);
+    expect(find.text(AppConstants.appTagline), findsOneWidget);
+    expect(find.text('Calculate My BMI'), findsOneWidget);
+
+    // Verify Navigation Bar items
+    expect(find.text('Calculator'), findsOneWidget);
+    expect(find.text('History'), findsOneWidget);
+    expect(find.text('Learn'), findsOneWidget);
+
+    // Switch to History tab
+    await tester.tap(find.text('History'));
+    await tester.pumpAndSettle();
+    expect(find.text('No Calculations Yet'), findsOneWidget);
+
+    // Switch to Learn tab
+    await tester.tap(find.text('Learn'));
+    await tester.pumpAndSettle();
+    expect(find.text('About BMI'), findsOneWidget);
+    expect(find.text('1. What is BMI?'), findsOneWidget);
+    expect(find.text('2. How is BMI Calculated?'), findsOneWidget);
+
+    // Switch back to Calculator tab
+    await tester.tap(find.text('Calculator'));
+    await tester.pumpAndSettle();
+
+    // Enter height and weight in metric mode
+    final textFields = find.byType(TextFormField);
+    await tester.enterText(textFields.at(0), '175');
+    await tester.enterText(textFields.at(1), '70');
+
+    // Scroll to and tap Calculate button
+    final calcButton = find.text('Calculate My BMI');
+    await tester.ensureVisible(calcButton);
+    await tester.pumpAndSettle();
+    await tester.tap(calcButton);
+    await tester.pumpAndSettle();
+
+    // Check result is displayed
+    expect(find.text('Calculation Result'), findsOneWidget);
+    expect(find.text('22.9'), findsWidgets); // Hero + marker
+    expect(find.text('Healthy Weight'), findsWidgets);
   });
 }

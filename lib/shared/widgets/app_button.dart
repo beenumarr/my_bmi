@@ -41,12 +41,16 @@ class AppButton extends StatelessWidget {
                 Icon(icon, size: 20),
                 const SizedBox(width: 8),
               ],
-              Text(
-                label,
-                style: const TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w600,
-                  letterSpacing: 0.1,
+              Flexible(
+                child: Text(
+                  label,
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 1,
+                  style: const TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                    letterSpacing: 0.1,
+                  ),
                 ),
               ),
             ],
