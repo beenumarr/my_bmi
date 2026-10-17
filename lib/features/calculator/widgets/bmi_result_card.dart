@@ -143,28 +143,34 @@ class BmiResultCard extends StatelessWidget {
             Container(
               padding: const EdgeInsets.all(14),
               decoration: BoxDecoration(
-                color: AppColors.infoLight,
+                color: isDark ? AppColors.infoDark : AppColors.infoLight,
                 borderRadius: BorderRadius.circular(12),
                 border: Border.all(
-                  color: AppColors.info.withValues(alpha: 0.3),
+                  color: isDark
+                      ? const Color(0xFF2E86AB).withValues(alpha: 0.5)
+                      : AppColors.info.withValues(alpha: 0.3),
                   width: 1.0,
                 ),
               ),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Icon(Icons.info_rounded, color: AppColors.info, size: 20),
+                  Icon(
+                    Icons.info_rounded,
+                    color: isDark ? const Color(0xFF4FA8CE) : AppColors.info,
+                    size: 20,
+                  ),
                   const SizedBox(width: 10),
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Text(
+                        Text(
                           'Age Notice: Youth Assessment',
                           style: TextStyle(
                             fontSize: 13,
                             fontWeight: FontWeight.w700,
-                            color: AppColors.info,
+                            color: isDark ? const Color(0xFF4FA8CE) : AppColors.info,
                           ),
                         ),
                         const SizedBox(height: 4),
@@ -204,7 +210,7 @@ class BmiResultCard extends StatelessWidget {
                     Icon(
                       Icons.lightbulb_outline_rounded,
                       size: 18,
-                      color: AppColors.primaryGreen,
+                      color: isDark ? AppColors.primaryGreenDark : AppColors.primaryGreen,
                     ),
                     const SizedBox(width: 6),
                     Text(
@@ -244,10 +250,10 @@ class BmiResultCard extends StatelessWidget {
                     const SizedBox(width: 8),
                     Text(
                       result.healthyWeightRangeDisplay,
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontSize: 12,
                         fontWeight: FontWeight.w700,
-                        color: AppColors.primaryGreen,
+                        color: isDark ? AppColors.primaryGreenDark : AppColors.primaryGreen,
                       ),
                     ),
                   ],

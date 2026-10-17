@@ -24,19 +24,29 @@ class AboutScreen extends StatelessWidget {
               const SizedBox(height: 12),
               // Brand Mark
               Container(
-                width: 80,
-                height: 80,
+                width: 88,
+                height: 88,
                 decoration: BoxDecoration(
-                  color: AppColors.softGreen,
-                  borderRadius: BorderRadius.circular(20),
+                  color: isDark ? AppColors.darkSurfaceSubtle : Colors.white,
+                  borderRadius: BorderRadius.circular(22),
                   border: Border.all(
-                    color: AppColors.primaryGreen.withValues(alpha: 0.3),
+                    color: isDark ? AppColors.darkBorder : AppColors.border,
+                    width: 1.2,
                   ),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withValues(alpha: isDark ? 0.35 : 0.08),
+                      blurRadius: 16,
+                      offset: const Offset(0, 4),
+                    ),
+                  ],
                 ),
-                child: const Icon(
-                  Icons.balance_rounded,
-                  size: 46,
-                  color: AppColors.primaryGreen,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(20),
+                  child: Image.asset(
+                    'assets/images/app_icon.png',
+                    fit: BoxFit.contain,
+                  ),
                 ),
               ),
               const SizedBox(height: 16),
@@ -73,10 +83,10 @@ class AboutScreen extends StatelessWidget {
                   children: [
                     Row(
                       children: [
-                        const Icon(
+                        Icon(
                           Icons.flag_outlined,
                           size: 20,
-                          color: AppColors.primaryGreen,
+                          color: isDark ? AppColors.primaryGreenDark : AppColors.primaryGreen,
                         ),
                         const SizedBox(width: 8),
                         Text(
@@ -108,10 +118,10 @@ class AboutScreen extends StatelessWidget {
                   children: [
                     Row(
                       children: [
-                        const Icon(
+                        Icon(
                           Icons.lock_outline_rounded,
                           size: 20,
-                          color: AppColors.primaryGreen,
+                          color: isDark ? AppColors.primaryGreenDark : AppColors.primaryGreen,
                         ),
                         const SizedBox(width: 8),
                         Text(
@@ -153,10 +163,10 @@ class AboutScreen extends StatelessWidget {
                   children: [
                     Row(
                       children: [
-                        const Icon(
+                        Icon(
                           Icons.medical_information_outlined,
                           size: 20,
-                          color: AppColors.primaryGreen,
+                          color: isDark ? AppColors.primaryGreenDark : AppColors.primaryGreen,
                         ),
                         const SizedBox(width: 8),
                         Text(
@@ -195,9 +205,13 @@ class AboutScreen extends StatelessWidget {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Padding(
-          padding: EdgeInsets.only(top: 6),
-          child: Icon(Icons.circle, size: 6, color: AppColors.primaryGreen),
+        Padding(
+          padding: const EdgeInsets.only(top: 6),
+          child: Icon(
+            Icons.circle,
+            size: 6,
+            color: isDark ? AppColors.primaryGreenDark : AppColors.primaryGreen,
+          ),
         ),
         const SizedBox(width: 8),
         Expanded(

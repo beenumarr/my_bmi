@@ -92,12 +92,12 @@ class AppTextField extends StatelessWidget {
                         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                         decoration: BoxDecoration(
                           color: isDark
-                              ? AppColors.darkSurface
+                              ? AppColors.softGreenDark
                               : AppColors.softGreen.withValues(alpha: 0.6),
                           borderRadius: BorderRadius.circular(8),
                           border: Border.all(
                             color: isDark
-                                ? AppColors.darkBorder
+                                ? AppColors.primaryGreenDark.withValues(alpha: 0.35)
                                 : AppColors.primaryGreen.withValues(alpha: 0.2),
                           ),
                         ),
@@ -107,7 +107,7 @@ class AppTextField extends StatelessWidget {
                             fontSize: 13,
                             fontWeight: FontWeight.w600,
                             color: isDark
-                                ? AppColors.softGreen
+                                ? AppColors.primaryGreenDark
                                 : AppColors.darkGreen,
                           ),
                         ),

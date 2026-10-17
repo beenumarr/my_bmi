@@ -275,16 +275,21 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
         title: Row(
           children: [
             Container(
-              width: 32,
-              height: 32,
+              width: 34,
+              height: 34,
               decoration: BoxDecoration(
-                color: AppColors.softGreen,
-                borderRadius: BorderRadius.circular(8),
+                color: isDark ? AppColors.darkSurfaceSubtle : AppColors.softGreen,
+                borderRadius: BorderRadius.circular(9),
+                border: Border.all(
+                  color: isDark ? AppColors.darkBorder : AppColors.borderSubtle,
+                ),
               ),
-              child: const Icon(
-                Icons.balance_rounded,
-                size: 20,
-                color: AppColors.primaryGreen,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(8),
+                child: Image.asset(
+                  'assets/images/app_icon.png',
+                  fit: BoxFit.contain,
+                ),
               ),
             ),
             const SizedBox(width: 10),

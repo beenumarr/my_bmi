@@ -43,11 +43,23 @@ class AppColors {
   static const Color bmiObese2 = Color(0xFFC0392B);      // Crimson red
   static const Color bmiObese3 = Color(0xFF881337);      // Dark wine red
 
-  // Dark Theme Counterparts (if user enables dark theme)
-  static const Color darkBackground = Color(0xFF111613);
-  static const Color darkSurface = Color(0xFF1A221E);
-  static const Color darkSurfaceSubtle = Color(0xFF232E28);
-  static const Color darkBorder = Color(0xFF2B3A32);
-  static const Color darkPrimaryText = Color(0xFFF2F6F3);
-  static const Color darkSecondaryText = Color(0xFFA1ADA5);
+  // Dark Theme Counterparts (deep obsidian sleek dark palette)
+  static const Color darkBackground = Color(0xFF0F1412);
+  static const Color darkSurface = Color(0xFF171D1A);
+  static const Color darkSurfaceSubtle = Color(0xFF202723);
+  static const Color darkBorder = Color(0xFF2C3631);
+  static const Color darkBorderSubtle = Color(0xFF232B27);
+  static const Color darkPrimaryText = Color(0xFFF3F7F5);
+  static const Color darkSecondaryText = Color(0xFFA2ADA7);
+  static const Color darkMutedText = Color(0xFF6F7B74);
+
+  // Vibrant Brand Accents for Dark Theme
+  static const Color primaryGreenDark = Color(0xFF2EB872);
+  static const Color darkGreenAccent = Color(0xFF144D34);
+  static const Color softGreenDark = Color(0xFF1B3327);
+
+  // Semantic Dark Feedback
+  static const Color errorDark = Color(0xFF381B1B);
+  static const Color warningDark = Color(0xFF352712);
+  static const Color infoDark = Color(0xFF122C30);
 }

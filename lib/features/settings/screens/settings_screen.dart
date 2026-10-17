@@ -91,13 +91,13 @@ class SettingsScreen extends StatelessWidget {
                           Container(
                             padding: const EdgeInsets.all(8),
                             decoration: BoxDecoration(
-                              color: AppColors.softGreen,
+                              color: isDark ? AppColors.softGreenDark : AppColors.softGreen,
                               borderRadius: BorderRadius.circular(8),
                             ),
-                            child: const Icon(
+                            child: Icon(
                               Icons.straighten_rounded,
                               size: 18,
-                              color: AppColors.primaryGreen,
+                              color: isDark ? AppColors.primaryGreenDark : AppColors.primaryGreen,
                             ),
                           ),
                           const SizedBox(width: 12),
@@ -169,13 +169,13 @@ class SettingsScreen extends StatelessWidget {
                           Container(
                             padding: const EdgeInsets.all(8),
                             decoration: BoxDecoration(
-                              color: AppColors.softGreen,
+                              color: isDark ? AppColors.softGreenDark : AppColors.softGreen,
                               borderRadius: BorderRadius.circular(8),
                             ),
-                            child: const Icon(
+                            child: Icon(
                               Icons.palette_outlined,
                               size: 18,
-                              color: AppColors.primaryGreen,
+                              color: isDark ? AppColors.primaryGreenDark : AppColors.primaryGreen,
                             ),
                           ),
                           const SizedBox(width: 12),
@@ -193,7 +193,7 @@ class SettingsScreen extends StatelessWidget {
                                 ),
                                 const SizedBox(height: 2),
                                 Text(
-                                  'White-first design with dark mode option',
+                                  'Choose light, dark, or system appearance',
                                   style: TextStyle(
                                     fontSize: 12,
                                     color: isDark
@@ -259,7 +259,7 @@ class SettingsScreen extends StatelessWidget {
                       Container(
                         padding: const EdgeInsets.all(8),
                         decoration: BoxDecoration(
-                          color: AppColors.errorLight,
+                          color: isDark ? AppColors.errorDark : AppColors.errorLight,
                           borderRadius: BorderRadius.circular(8),
                         ),
                         child: const Icon(
@@ -326,13 +326,13 @@ class SettingsScreen extends StatelessWidget {
                       Container(
                         padding: const EdgeInsets.all(8),
                         decoration: BoxDecoration(
-                          color: AppColors.softGreen,
+                          color: isDark ? AppColors.softGreenDark : AppColors.softGreen,
                           borderRadius: BorderRadius.circular(8),
                         ),
-                        child: const Icon(
+                        child: Icon(
                           Icons.info_outline_rounded,
                           size: 18,
-                          color: AppColors.primaryGreen,
+                          color: isDark ? AppColors.primaryGreenDark : AppColors.primaryGreen,
                         ),
                       ),
                       const SizedBox(width: 12),
@@ -441,13 +441,13 @@ class SettingsScreen extends StatelessWidget {
         decoration: BoxDecoration(
           color: isSelected
               ? (isDark
-                  ? AppColors.darkSurfaceSubtle
+                  ? AppColors.softGreenDark
                   : AppColors.softGreen.withValues(alpha: 0.6))
               : Colors.transparent,
           borderRadius: BorderRadius.circular(10),
           border: Border.all(
             color: isSelected
-                ? AppColors.primaryGreen
+                ? (isDark ? AppColors.primaryGreenDark : AppColors.primaryGreen)
                 : (isDark ? AppColors.darkBorder : AppColors.border),
             width: isSelected ? 1.5 : 1.0,
           ),
@@ -459,7 +459,7 @@ class SettingsScreen extends StatelessWidget {
               fontSize: 12.5,
               fontWeight: isSelected ? FontWeight.w700 : FontWeight.w500,
               color: isSelected
-                  ? (isDark ? AppColors.softGreen : AppColors.darkGreen)
+                  ? (isDark ? AppColors.primaryGreenDark : AppColors.darkGreen)
                   : (isDark ? AppColors.darkSecondaryText : AppColors.secondaryText),
             ),
           ),
@@ -484,13 +484,13 @@ class SettingsScreen extends StatelessWidget {
         decoration: BoxDecoration(
           color: isSelected
               ? (isDark
-                  ? AppColors.darkSurfaceSubtle
+                  ? AppColors.softGreenDark
                   : AppColors.softGreen.withValues(alpha: 0.6))
               : Colors.transparent,
           borderRadius: BorderRadius.circular(10),
           border: Border.all(
             color: isSelected
-                ? AppColors.primaryGreen
+                ? (isDark ? AppColors.primaryGreenDark : AppColors.primaryGreen)
                 : (isDark ? AppColors.darkBorder : AppColors.border),
             width: isSelected ? 1.5 : 1.0,
           ),
@@ -501,7 +501,7 @@ class SettingsScreen extends StatelessWidget {
               icon,
               size: 18,
               color: isSelected
-                  ? AppColors.primaryGreen
+                  ? (isDark ? AppColors.primaryGreenDark : AppColors.primaryGreen)
                   : (isDark ? AppColors.darkSecondaryText : AppColors.secondaryText),
             ),
             const SizedBox(height: 4),
@@ -511,7 +511,7 @@ class SettingsScreen extends StatelessWidget {
                 fontSize: 12,
                 fontWeight: isSelected ? FontWeight.w700 : FontWeight.w500,
                 color: isSelected
-                    ? (isDark ? AppColors.softGreen : AppColors.darkGreen)
+                    ? (isDark ? AppColors.primaryGreenDark : AppColors.darkGreen)
                     : (isDark ? AppColors.darkSecondaryText : AppColors.secondaryText),
               ),
             ),

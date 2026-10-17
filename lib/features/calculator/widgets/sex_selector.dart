@@ -60,13 +60,13 @@ class SexSelector extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: isSelected
                       ? (isDark
-                          ? AppColors.darkSurfaceSubtle
+                          ? AppColors.softGreenDark
                           : AppColors.softGreen.withValues(alpha: 0.7))
                       : (isDark ? AppColors.darkSurface : AppColors.secondaryBackground),
                   borderRadius: BorderRadius.circular(10),
                   border: Border.all(
                     color: isSelected
-                        ? AppColors.primaryGreen
+                        ? (isDark ? AppColors.primaryGreenDark : AppColors.primaryGreen)
                         : (isDark ? AppColors.darkBorder : AppColors.border),
                     width: isSelected ? 1.5 : 1.0,
                   ),
@@ -78,7 +78,7 @@ class SexSelector extends StatelessWidget {
                       option.icon,
                       size: 16,
                       color: isSelected
-                          ? AppColors.primaryGreen
+                          ? (isDark ? AppColors.primaryGreenDark : AppColors.primaryGreen)
                           : (isDark ? AppColors.darkSecondaryText : AppColors.secondaryText),
                     ),
                     const SizedBox(width: 6),
@@ -88,7 +88,7 @@ class SexSelector extends StatelessWidget {
                         fontSize: 13,
                         fontWeight: isSelected ? FontWeight.w600 : FontWeight.w500,
                         color: isSelected
-                            ? (isDark ? AppColors.softGreen : AppColors.darkGreen)
+                            ? (isDark ? AppColors.primaryGreenDark : AppColors.darkGreen)
                             : (isDark ? AppColors.darkSecondaryText : AppColors.secondaryText),
                       ),
                     ),

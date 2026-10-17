@@ -95,11 +95,14 @@ class HistoryScreen extends StatelessWidget {
                               ? AppColors.darkSurfaceSubtle
                               : AppColors.softGreen,
                           shape: BoxShape.circle,
+                          border: Border.all(
+                            color: isDark ? AppColors.darkBorder : Colors.transparent,
+                          ),
                         ),
-                        child: const Icon(
+                        child: Icon(
                           Icons.history_rounded,
                           size: 36,
-                          color: AppColors.primaryGreen,
+                          color: isDark ? AppColors.primaryGreenDark : AppColors.primaryGreen,
                         ),
                       ),
                       const SizedBox(height: 20),

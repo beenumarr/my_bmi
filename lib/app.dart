@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'core/theme/app_colors.dart';
 import 'core/theme/app_theme.dart';
 import 'features/calculator/screens/calculator_screen.dart';
 import 'features/history/screens/history_screen.dart';
@@ -54,6 +56,18 @@ class _MyBmiAppState extends State<MyBmiApp> {
           themeMode: widget.settingsService.themeMode,
           home: Builder(
             builder: (innerContext) {
+              final isDark = Theme.of(innerContext).brightness == Brightness.dark;
+
+              SystemChrome.setSystemUIOverlayStyle(
+                SystemUiOverlayStyle(
+                  statusBarColor: Colors.transparent,
+                  statusBarIconBrightness: isDark ? Brightness.light : Brightness.dark,
+                  statusBarBrightness: isDark ? Brightness.dark : Brightness.light,
+                  systemNavigationBarColor: isDark ? AppColors.darkBackground : AppColors.primaryBackground,
+                  systemNavigationBarIconBrightness: isDark ? Brightness.light : Brightness.dark,
+                ),
+              );
+
               final pages = [
                 CalculatorScreen(
                   historyService: widget.historyService,
@@ -75,6 +89,15 @@ class _MyBmiAppState extends State<MyBmiApp> {
                 bottomNavigationBar: BottomNavigationBar(
                   currentIndex: _currentIndex,
                   onTap: _onTabSelected,
+                  backgroundColor: isDark
+                      ? AppColors.darkSurface
+                      : AppColors.primaryBackground,
+                  selectedItemColor: isDark
+                      ? AppColors.primaryGreenDark
+                      : AppColors.primaryGreen,
+                  unselectedItemColor: isDark
+                      ? AppColors.darkSecondaryText
+                      : AppColors.secondaryText,
                   items: const [
                     BottomNavigationBarItem(
                       icon: Icon(Icons.calculate_outlined),

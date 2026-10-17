@@ -45,7 +45,7 @@ class LearnScreen extends StatelessWidget {
                     Container(
                       padding: const EdgeInsets.all(8),
                       decoration: BoxDecoration(
-                        color: AppColors.primaryGreen,
+                        color: isDark ? AppColors.primaryGreenDark : AppColors.primaryGreen,
                         borderRadius: BorderRadius.circular(10),
                       ),
                       child: const Icon(
@@ -65,7 +65,7 @@ class LearnScreen extends StatelessWidget {
                               fontSize: 16,
                               fontWeight: FontWeight.w700,
                               color: isDark
-                                  ? AppColors.softGreen
+                                  ? AppColors.primaryGreenDark
                                   : AppColors.darkGreen,
                             ),
                           ),
@@ -283,10 +283,10 @@ class LearnScreen extends StatelessWidget {
                   children: [
                     Row(
                       children: [
-                        const Icon(
+                        Icon(
                           Icons.verified_user_outlined,
                           size: 20,
-                          color: AppColors.primaryGreen,
+                          color: isDark ? AppColors.primaryGreenDark : AppColors.primaryGreen,
                         ),
                         const SizedBox(width: 8),
                         Expanded(
@@ -354,10 +354,10 @@ class LearnScreen extends StatelessWidget {
         children: [
           Text(
             title,
-            style: const TextStyle(
+            style: TextStyle(
               fontSize: 13,
               fontWeight: FontWeight.w700,
-              color: AppColors.primaryGreen,
+              color: isDark ? AppColors.primaryGreenDark : AppColors.primaryGreen,
             ),
           ),
           const SizedBox(height: 4),
@@ -392,7 +392,7 @@ class LearnScreen extends StatelessWidget {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Icon(icon, size: 20, color: AppColors.primaryGreen),
+        Icon(icon, size: 20, color: isDark ? AppColors.primaryGreenDark : AppColors.primaryGreen),
         const SizedBox(width: 12),
         Expanded(
           child: Column(

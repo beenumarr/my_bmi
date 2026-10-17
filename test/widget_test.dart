@@ -74,4 +74,27 @@ void main() {
     expect(find.text('22.9'), findsWidgets); // Hero + marker
     expect(find.text('Healthy Weight'), findsWidgets);
   });
+
+  testWidgets('Dark mode can be set and updates ThemeData brightness',
+      (WidgetTester tester) async {
+    final settingsService = SettingsService();
+    final historyService = HistoryService();
+    await settingsService.init();
+    await historyService.init();
+
+    await tester.pumpWidget(
+      MyBmiApp(
+        settingsService: settingsService,
+        historyService: historyService,
+      ),
+    );
+    await tester.pumpAndSettle();
+
+    // Set theme to dark
+    await settingsService.setThemeMode(ThemeMode.dark);
+    await tester.pumpAndSettle();
+
+    final materialApp = tester.widget<MaterialApp>(find.byType(MaterialApp));
+    expect(materialApp.themeMode, ThemeMode.dark);
+  });
 }

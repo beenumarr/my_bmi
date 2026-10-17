@@ -85,7 +85,7 @@ class UnitToggle extends StatelessWidget {
           border: isSelected
               ? Border.all(
                   color: isDark
-                      ? AppColors.primaryGreen.withValues(alpha: 0.5)
+                      ? AppColors.primaryGreenDark.withValues(alpha: 0.6)
                       : AppColors.primaryGreen.withValues(alpha: 0.25),
                   width: 1.0,
                 )
@@ -100,7 +100,7 @@ class UnitToggle extends StatelessWidget {
                 fontSize: 14,
                 fontWeight: isSelected ? FontWeight.w700 : FontWeight.w500,
                 color: isSelected
-                    ? (isDark ? AppColors.softGreen : AppColors.primaryGreen)
+                    ? (isDark ? AppColors.primaryGreenDark : AppColors.primaryGreen)
                     : (isDark ? AppColors.darkSecondaryText : AppColors.secondaryText),
               ),
             ),

@@ -132,14 +132,14 @@ class AppTheme {
     return ThemeData(
       useMaterial3: true,
       brightness: Brightness.dark,
-      primaryColor: AppColors.primaryGreen,
+      primaryColor: AppColors.primaryGreenDark,
       scaffoldBackgroundColor: AppColors.darkBackground,
       colorScheme: const ColorScheme.dark(
-        primary: AppColors.primaryGreen,
+        primary: AppColors.primaryGreenDark,
         onPrimary: Colors.white,
-        primaryContainer: AppColors.darkSurfaceSubtle,
-        onPrimaryContainer: AppColors.softGreen,
-        secondary: AppColors.primaryGreen,
+        primaryContainer: AppColors.softGreenDark,
+        onPrimaryContainer: AppColors.primaryGreenDark,
+        secondary: AppColors.primaryGreenDark,
         onSecondary: Colors.white,
         surface: AppColors.darkSurface,
         onSurface: AppColors.darkPrimaryText,
@@ -157,12 +157,31 @@ class AppTheme {
           statusBarColor: Colors.transparent,
           statusBarIconBrightness: Brightness.light,
           statusBarBrightness: Brightness.dark,
+          systemNavigationBarColor: AppColors.darkBackground,
+          systemNavigationBarIconBrightness: Brightness.light,
         ),
         titleTextStyle: TextStyle(
           fontSize: 20,
           fontWeight: FontWeight.w700,
           color: AppColors.darkPrimaryText,
           letterSpacing: -0.3,
+        ),
+      ),
+      dialogTheme: DialogThemeData(
+        backgroundColor: AppColors.darkSurface,
+        surfaceTintColor: Colors.transparent,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(16),
+          side: const BorderSide(color: AppColors.darkBorder, width: 1.0),
+        ),
+        titleTextStyle: const TextStyle(
+          fontSize: 18,
+          fontWeight: FontWeight.w700,
+          color: AppColors.darkPrimaryText,
+        ),
+        contentTextStyle: const TextStyle(
+          fontSize: 14,
+          color: AppColors.darkSecondaryText,
         ),
       ),
       cardTheme: CardThemeData(
@@ -188,7 +207,7 @@ class AppTheme {
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
-          borderSide: const BorderSide(color: AppColors.primaryGreen, width: 1.5),
+          borderSide: const BorderSide(color: AppColors.primaryGreenDark, width: 1.5),
         ),
         errorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
@@ -198,12 +217,12 @@ class AppTheme {
           borderRadius: BorderRadius.circular(12),
           borderSide: const BorderSide(color: AppColors.error, width: 1.5),
         ),
-        hintStyle: AppTextStyles.bodyMedium.copyWith(color: AppColors.darkSecondaryText),
+        hintStyle: AppTextStyles.bodyMedium.copyWith(color: AppColors.darkMutedText),
         labelStyle: AppTextStyles.labelMedium.copyWith(color: AppColors.darkSecondaryText),
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
-          backgroundColor: AppColors.primaryGreen,
+          backgroundColor: AppColors.primaryGreenDark,
           foregroundColor: Colors.white,
           elevation: 0,
           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
@@ -219,7 +238,7 @@ class AppTheme {
       ),
       outlinedButtonTheme: OutlinedButtonThemeData(
         style: OutlinedButton.styleFrom(
-          foregroundColor: AppColors.primaryGreen,
+          foregroundColor: AppColors.primaryGreenDark,
           side: const BorderSide(color: AppColors.darkBorder, width: 1.2),
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
           shape: RoundedRectangleBorder(
@@ -230,7 +249,7 @@ class AppTheme {
       bottomNavigationBarTheme: const BottomNavigationBarThemeData(
         backgroundColor: AppColors.darkSurface,
         elevation: 8,
-        selectedItemColor: AppColors.primaryGreen,
+        selectedItemColor: AppColors.primaryGreenDark,
         unselectedItemColor: AppColors.darkSecondaryText,
         selectedLabelStyle: TextStyle(fontSize: 12, fontWeight: FontWeight.w600),
         unselectedLabelStyle: TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
@@ -240,6 +259,12 @@ class AppTheme {
         color: AppColors.darkBorder,
         thickness: 1.0,
         space: 1.0,
+      ),
+      snackBarTheme: SnackBarThemeData(
+        backgroundColor: AppColors.darkSurfaceSubtle,
+        contentTextStyle: const TextStyle(color: AppColors.darkPrimaryText),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+        behavior: SnackBarBehavior.floating,
       ),
     );
   }

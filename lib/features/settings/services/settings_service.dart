@@ -6,7 +6,7 @@ import '../../calculator/models/measurement_system.dart';
 /// Manages user preferences: unit system and theme mode.
 class SettingsService extends ChangeNotifier {
   MeasurementSystem _defaultSystem = MeasurementSystem.metric;
-  ThemeMode _themeMode = ThemeMode.light;
+  ThemeMode _themeMode = ThemeMode.system;
   bool _isLoaded = false;
 
   MeasurementSystem get defaultSystem => _defaultSystem;
@@ -29,7 +29,7 @@ class SettingsService extends ChangeNotifier {
       if (themeStr != null) {
         _themeMode = ThemeMode.values.firstWhere(
           (t) => t.name == themeStr,
-          orElse: () => ThemeMode.light,
+          orElse: () => ThemeMode.system,
         );
       }
     } catch (e) {
